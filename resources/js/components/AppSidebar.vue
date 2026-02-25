@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import { Folder, File, LayoutGrid, Users } from 'lucide-vue-next';
+import { Folder, File, LayoutGrid, Users, HomeIcon } from 'lucide-vue-next';
 import { computed } from 'vue';
 
 import NavMain from '@/components/NavMain.vue';
@@ -37,7 +37,9 @@ const mainNavItems = computed<NavItem[]>(() => {
     }
     return [
         { title: 'Dashboard', href: '/user/dashboard', icon: LayoutGrid },
-        { title: 'Profile', href: '/user/folders', icon: Folder },
+        { title: 'Home', href: '/user/home', icon: HomeIcon },
+        { title: 'mydrive', href: '/user/mydrive', icon: Users },
+
     ];
 });
 
