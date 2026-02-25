@@ -90,8 +90,8 @@ const createSubFolder = (action: 'overwrite' | 'version' | null = null) => {
       <div v-if="duplicateFolder" class="bg-yellow-100 p-4 rounded-md mb-4 space-y-3">
         <p>Folder "{{ duplicateFolder }}" already exists. What would you like to do?</p>
         <div class="flex gap-3">
-          <Button class="bg-blue-600 text-white" @click="createSubFolder('overwrite')">Overwrite</Button>
-          <Button class="bg-gray-200" @click="createSubFolder('version')">Create New Version</Button>
+          <Button class="bg-blue-600 text-white"  @click="() => createSubFolder('overwrite')">Overwrite</Button>
+          <Button class="bg-gray-200" @click="() => createSubFolder('version')">Create New Version</Button>
         </div>
       </div>
 
@@ -184,7 +184,7 @@ const createSubFolder = (action: 'overwrite' | 'version' | null = null) => {
           />
           <div class="flex justify-end gap-3">
             <Button variant="outline" @click="closeModal">Cancel</Button>
-            <Button class="bg-blue-600 text-white" @click="createSubFolder">Create</Button>
+            <Button class="bg-blue-600 text-white" @click="() => createSubFolder()">Create</Button>
           </div>
         </div>
       </div>
