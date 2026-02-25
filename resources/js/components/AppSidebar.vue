@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import { BookOpen, Folder, File, LayoutGrid, Users, PackageSearch, ShoppingCart } from 'lucide-vue-next';
-import NavFooter from '@/components/NavFooter.vue';
+import { Folder, File, LayoutGrid, Users } from 'lucide-vue-next';
+import { computed } from 'vue';
+
 import NavMain from '@/components/NavMain.vue';
 import NavUser from '@/components/NavUser.vue';
 import {
@@ -15,7 +16,6 @@ import {
 } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import AppLogo from './AppLogo.vue';
-import { computed } from 'vue';
 
 const page = usePage();
 const user = computed(() => page.props.auth.user);
@@ -37,8 +37,7 @@ const mainNavItems = computed<NavItem[]>(() => {
     }
     return [
         { title: 'Dashboard', href: '/user/dashboard', icon: LayoutGrid },
-        { title: 'Folders', href: '/user/folders', icon: Folder },
-        { title: 'Files', href: '/user/files', icon: File },
+        { title: 'Profile', href: '/user/folders', icon: Folder },
     ];
 });
 
@@ -62,7 +61,7 @@ const mainNavItems = computed<NavItem[]>(() => {
             <NavMain :items="mainNavItems" />
         </SidebarContent>
         <SidebarFooter>
-        
+
             <NavUser />
         </SidebarFooter>
     </Sidebar>

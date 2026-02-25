@@ -8,6 +8,6 @@ use Inertia\Inertia;
 class FileController extends Controller
 {
     public function index(){
-        return Inertia::render('user/files/index');
+        return Inertia::render('user/Profile/files/index');
     }
 }

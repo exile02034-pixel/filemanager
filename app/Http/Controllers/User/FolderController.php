@@ -17,8 +17,8 @@ class FolderController extends Controller
         }
 
        public function index(Request $request){
-            $search = $request->input('search'); 
-            $sort = $request->input('sort', 'recent'); 
+            $search = $request->input('search');
+            $sort = $request->input('sort', 'recent');
 
             $folders = $request->user()->folders()
                 ->when($search, function ($q) use ($search) {
@@ -38,7 +38,7 @@ class FolderController extends Controller
                 })
                 ->get();
 
-            return Inertia::render('user/folders/index', [
+            return Inertia::render('user/Profile/folders/index', [
                 'folders' => $folders,
                 'search' => $search,
                 'sort' => $sort,
@@ -93,28 +93,28 @@ class FolderController extends Controller
 
             public function show(Request $request, Folder $folder)
         {
-            
+
             if ($folder->user_id !== $request->user()->id) {
                 abort(403);
             }
 
-            
+
             $subfolders = $folder->children()
                 ->orderBy('created_at', 'desc')
                 ->get();
 
-            
+
             $files = $folder->files()
                 ->orderBy('created_at', 'desc')
                 ->get();
 
-            return Inertia::render('user/folders/show', [
+            return Inertia::render('user/Profile/folders/show', [
                 'folder' => $folder,
                 'subfolders' => $subfolders,
                 'files' => $files,
             ]);
         }
-        
+
         public function update(Request $request, $id)
         {
             $request->validate([

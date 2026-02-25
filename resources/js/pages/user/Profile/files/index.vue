@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
-import { ref, computed } from 'vue'
-import AppLayout from '@/layouts/AppLayout.vue'
 import { FileText, Image, File, Search, ArrowDownUp, LayoutGrid, List,Plus } from 'lucide-vue-next'
+import { ref, computed } from 'vue'
 import { Button } from '@/components/ui/button'
+
+import AppLayout from '@/layouts/AppLayout.vue'
 type FileItem = {
     id: number
     name: string
@@ -22,10 +23,10 @@ const files = ref<FileItem[]>([
 
 const search = ref('')
 const sortBy = ref('recent')
-const viewMode = ref<'grid' | 'list'>('grid') 
+const viewMode = ref<'grid' | 'list'>('grid')
 
 const filteredFiles = computed(() => {
-    let filtered = files.value.filter(file =>
+    const filtered = files.value.filter(file =>
         file.name.toLowerCase().includes(search.value.toLowerCase())
     )
 
@@ -122,7 +123,7 @@ const getIcon = (type: string) => {
                         </button>
 
                          <Button
-                        
+
                         class="flex items-center gap-2 bg-blue-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm transition"
                     >
                         <Plus class="w-4 h-4" />
